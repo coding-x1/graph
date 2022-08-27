@@ -2,6 +2,7 @@ package main
 
 import (
 	"net/http"
+	"os"
 
 	"github.com/go-echarts/go-echarts/v2/charts"
 	"github.com/go-echarts/go-echarts/v2/opts"
@@ -77,5 +78,5 @@ func httpserver(w http.ResponseWriter, _ *http.Request) {
 
 func main() {
 	http.HandleFunc("/", httpserver)
-	http.ListenAndServe(":80", nil)
+	http.ListenAndServe(":"+os.Getenv("PORT"), nil)
 }
